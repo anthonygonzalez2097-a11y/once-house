@@ -1205,6 +1205,15 @@
       left: 152px;
     }
 
+    /* En pantallas angostas, "Descargar/Publicar" (abajo a la derecha) puede
+       encimarse con ⚙️📦🧾 (abajo a la izquierda). Los subimos un poco para
+       que no se tapen entre sí. */
+    @media (max-width: 480px) {
+      .boton-config-flotante {
+        bottom: 140px;
+      }
+    }
+
     .fila-botones-guardar {
       position: fixed;
       bottom: 20px;
@@ -1302,6 +1311,40 @@
     }
 
     .contenido-inventario {
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* Barra de desplazamiento delgada y visible, como en cualquier página web,
+       para que se note que hay más contenido abajo y se pueda arrastrar. */
+    .contenido-config,
+    .contenido-inventario,
+    .contenido-cotizacion {
+      scrollbar-width: thin;
+      scrollbar-color: #ff8c00 #1a1a1a;
+    }
+
+    .contenido-config::-webkit-scrollbar,
+    .contenido-inventario::-webkit-scrollbar,
+    .contenido-cotizacion::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .contenido-config::-webkit-scrollbar-track,
+    .contenido-inventario::-webkit-scrollbar-track,
+    .contenido-cotizacion::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      border-radius: 6px;
+    }
+
+    .contenido-config::-webkit-scrollbar-thumb,
+    .contenido-inventario::-webkit-scrollbar-thumb,
+    .contenido-cotizacion::-webkit-scrollbar-thumb {
+      background-color: #ff8c00;
+      border-radius: 6px;
+    }
+
+    .contenido-config {
       overflow-y: auto;
       flex: 1;
     }
@@ -1803,6 +1846,7 @@
       cursor: default;
     }
 
+
     .campo-dato-negocio {
       border: none;
       border-bottom: 1px dashed #cccccc;
@@ -2056,6 +2100,7 @@
           <button type="button" class="boton-cerrar-carrito" onclick="cerrarConfig()" aria-label="Cerrar">&times;</button>
         </div>
 
+        <div class="contenido-config">
         <label>Número de WhatsApp para pedidos (con código de país, sin +)</label>
         <input type="text" id="campo-whatsapp-pedidos">
 
@@ -2131,6 +2176,7 @@
 
         <button type="button" class="boton-agregar-compra" onclick="guardarConexionGitHub()">Guardar conexión con GitHub</button>
         <p class="ayuda-fondo-sitio" id="estado-conexion-github">Sin conectar todavía.</p>
+        </div>
       </div>
     </div>
 
